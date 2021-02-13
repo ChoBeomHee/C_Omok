@@ -1,87 +1,54 @@
-#include<stdio.h>
-#include<Windows.h>
-#define MAX 10	 // 오목판 크기
+#include <stdio.h> 
+#include <Windows.h>
+#define MAX 19	 // 오목판 크기
+
 
 typedef struct {
 	int r;
 	int c;
 }element;
-
+void gotoxy(int x, int y);
 int Matchplay1(unsigned char boad[MAX][MAX]);
 void Iniboad(unsigned char boad[MAX][MAX]) {
 	for (int i = 0; i < MAX; i++)
 		for (int j = 0; j < MAX; j++)
 			boad[i][j] = '*';
 }
-int Threethree(int x, int y, char boad[MAX][MAX]) {
-	if (boad[x][y] == 'O' && boad[x][y] == boad[x][y + 1] && boad[x][y] == boad[x][y + 2]) {	// 가로줄 검사
-		if (boad[x][y] == 'O' && boad[x][y] == boad[x + 1][y] && boad[x + 2][y] == boad[x][y])	// 가로줄이 삼이고 세로줄 검사
-			return 1;
-		else if (boad[x][y] == 'O' && boad[x - 1][y + 1] == boad[x][y] && boad[x][y] == boad[x - 2][y + 2])	// 가로줄이 삼이고 대각선줄 검사
-			return 1;
-		else if (boad[x][y] == 'O' && boad[x][y] == boad[x + 1][y + 1] && boad[x][y] == boad[x + 2][y + 2])
-			return 1;
-		else return 2;
-	}
-}
 void Printboad(char boad[MAX][MAX]) {
-	printf("\n");
-	printf("    0  1  2  3  4  5  6  7  8  9\n");
-	printf("  =====================================\n");
+	gotoxy(0, 0);
 	for (int i = 0; i < MAX; i++) {
-		printf("%d |", i);
 		for (int j = 0; j < MAX; j++)
-			printf(" %c ", boad[i][j]);
-		printf("\n\n");
+			printf("%c", boad[i][j]);
+		printf("\n");
 	}
-	printf("  =====================================\n");
 }
 // 오목판 출력
-void Playchoice1(char boad[MAX][MAX]) {
-	int a, b;
-	printf("		1번 플레이어 턴\n 행, 열 입력 :");
-	while (1)
-	{
-		scanf_s("%d", &a);
-		scanf_s("%d", &b);
+void Playchoice1(char boad[MAX][MAX], int a, int b) {
 
-		if (boad[a][b] == 'O' || boad[a][b] == 'X')
-			printf("     다시 입력하세요 :");
-		else if (Threethree(a, b, boad) == 1)
-			printf("	 33입니다. 다시 입력하세요 : ");
-		else {
-			element tmp;
-			tmp.c = a;
-			tmp.r = b;
-			boad[a][b] = 'O';
-			break;
-		}
-	}
+	element tmp;
+	tmp.c = b;
+	tmp.r = a;
+	boad[b][a] = 'O';
+
 	Printboad(boad);
+	printf("2번 플레이어 턴");
 }
 // 첫번째 플레이어 턴
-void Playchoice2(unsigned char boad[MAX][MAX]) {
-
-	int a, b;
-
-	printf("		2번 플레이어 턴\n 행, 열 입력 :");
+void Playchoice2(char boad[MAX][MAX], int a, int b) {
 	while (1)
 	{
-		scanf_s("%d", &a);
-		scanf_s("%d", &b);
-
-		if (boad[a][b] == 'O' || boad[a][b] == 'X')
+		if (boad[b][a] == 'O' || boad[b][a] == 'X')
 			printf("	다시 입력하세요 :");
 		else {
 			element tmp;
-			tmp.c = a;
-			tmp.r = b;
-			boad[a][b] = 'X';
+			tmp.c = b;
+			tmp.r = a;
+			boad[b][a] = 'X';
 			break;
 		}
 	}
-
 	Printboad(boad);
+	printf("1번 플레이어 턴");
 }
 // 두번째 플레이어 턴
 int Matchplay1(unsigned char boad[MAX][MAX])
@@ -154,86 +121,113 @@ int Matchplay2(unsigned char boad[MAX][MAX])
 		}
 	}// 대각선 5개 승리 검사
 }// 승리 조건
+
+HANDLE COUT = 0;    // 콘솔 출력 장치
+HANDLE CIN = 0;        // 콘솔 입력 장치
+
+int be_input()
+{
+	INPUT_RECORD input_record;
+	DWORD input_count;
+
+	PeekConsoleInput(CIN, &input_record, 1, &input_count);
+	return input_count;
+}
+
+int get_input(WORD* vkey, COORD* pos)
+{
+	INPUT_RECORD input_record;
+	DWORD input_count;
+
+	ReadConsoleInput(CIN, &input_record, 1, &input_count);
+	switch (input_record.EventType) {
+	case MOUSE_EVENT:
+		if (pos && (input_record.Event.MouseEvent.dwButtonState & FROM_LEFT_1ST_BUTTON_PRESSED)) {
+			CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+			GetConsoleScreenBufferInfo(COUT, &csbi);
+
+			*pos = input_record.Event.MouseEvent.dwMousePosition;
+			pos->X -= csbi.srWindow.Left;
+			pos->Y -= csbi.srWindow.Top;
+
+			return MOUSE_EVENT;
+		}
+		break;
+
+	}
+
+	FlushConsoleInputBuffer(CIN);
+	return 0;
+}
+
+void gotoxy(int x, int y)      // 좌표 보내기 gotoxy
+{
+	COORD Cur;
+	Cur.X = x;
+	Cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+}
+
 int main()
 {
 	int first;
+	int attack;
 	int again, gamenum = 1, score1 = 0, score2 = 0;
-	char boad[MAX][MAX];
+	char boad[MAX][MAX];								// 필요 변수
 
-	printf("1번째	게임 시작!		\n선공 선택(1번, 2번 플레이어)");
+	DWORD mode;
+	WORD key;
+	COORD pos;
+
+	int event;        // 마우스 이벤트에 이용
+	int x;            // 마우스의 x좌표 저장소
+	int y;            // 마우스의 y좌표 저장소
+
+	CIN = GetStdHandle(STD_INPUT_HANDLE);
+	COUT = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	// 마우스 활성화
+	GetConsoleMode(CIN, &mode);
+	SetConsoleMode(CIN, mode | ENABLE_MOUSE_INPUT);
+
+	printf("선공 : ");
+	scanf_s("%d", &attack);
+
+	Iniboad(boad);
+	Printboad(boad);
+
+	if (attack == 1)
+		first = 1;
+	else
+		first = 2;
 
 	while (1)
 	{
-		Iniboad(boad);
-		printf("선공 플레이어 : ");
-		scanf_s("%d", &first);
-		Printboad(boad);
-		if (first == 1) {
-			while (1)
+		if (be_input()) {
+			if (get_input(&key, &pos) != 0)
 			{
-				Playchoice1(boad);
-				if (Matchplay1(boad) == 1)
-				{
-					printf("플레이어 1의 승리 !\n");
-					score1++;
-					gamenum++;
-					printf("현재 스코어 %d : %d\n계속하려면 1 그만하려면 0 ", score1, score2);
-					scanf_s("%d", &again);
-					if (again == 0)
-						return 0;
-					else
+				first++;
+				MOUSE_EVENT;
+				x = pos.X;    // 마우스클릭값이 x,y변수에 저장되도록함
+				y = pos.Y;
+				gotoxy(0, 0);
+				if (first % 2 == 0) {
+					Playchoice1(boad, x, y);
+					if (Matchplay1(boad) == 1) {
+						printf("1번 플레이어 승리!\n");
 						break;
+					}
 				}
-
-				Playchoice2(boad);
-				if (Matchplay2(boad) == 1)
-				{
-					printf("플레이어 2의 승리 !\n");
-					score2++;
-					gamenum++;
-					printf("현재 스코어 %d :%d\n계속하려면 1 그만하려면 0 ", score1, score2);
-					scanf_s("%d", &again);
-					if (again == 0)
-						return 0;
-					else
+				else {
+					Playchoice2(boad, x, y);
+					if (Matchplay2(boad) == 1) {
+						printf("2번 플레이어 승리!\n");
 						break;
-				}
-			}
-		}
-		else
-		{
-			while (1)
-			{
-				Playchoice2(boad);
-				if (Matchplay2(boad) == 1)
-				{
-					printf("플레이어 2의 승리 !\n");
-					score2++;
-					gamenum++;
-					printf("현재 스코어 %d :%d\n계속하려면 1 그만하려면 0 ", score1, score2);
-					scanf_s("%d", &again);
-					if (again == 0)
-						return 0;
-					else
-						break;
-				}
-
-				Playchoice1(boad);
-				if (Matchplay1(boad) == 1)
-				{
-					printf("플레이어 1의 승리 !\n");
-					score1++;
-					gamenum++;
-					printf("현재 스코어 %d : %d\n계속하려면 1 그만하려면 0 ", score1, score2);
-					scanf_s("%d", &again);
-					if (again == 0)
-						return 0;
-					else
-						break;
+					}
 				}
 			}
 		}
 	}
-	return 0;
 
 }

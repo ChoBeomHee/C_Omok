@@ -1,5 +1,6 @@
 ﻿  Omok.c
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(26): warning C4715: 'Threethree': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(156): warning C4715: 'Matchplay2': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(121): warning C4715: 'Matchplay1': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(183,6): warning C4101: 'event' :참조되지 않은 지역 변수입니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(176,6): warning C4101: 'again' :참조되지 않은 지역 변수입니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(88): warning C4715: 'Matchplay1': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(123): warning C4715: 'Matchplay2': 모든 제어 경로에서 값을 반환하지는 않습니다.
   OMOK.vcxproj -> C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\Debug\OMOK.exe
