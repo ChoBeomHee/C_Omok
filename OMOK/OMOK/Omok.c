@@ -8,6 +8,11 @@ typedef struct {
 	int c;
 }element;
 void gotoxy(int x, int y);
+void clearconsole() {
+	COORD Coor = { 0, 0 };
+	DWORD dw;
+	FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 80 * 25, Coor, &dw);
+}
 int Matchplay1(unsigned char boad[MAX][MAX]);
 void Iniboad(unsigned char boad[MAX][MAX]) {
 	for (int i = 0; i < MAX; i++)
@@ -24,6 +29,7 @@ void Printboad(char boad[MAX][MAX]) {
 }
 // 오목판 출력
 void Playchoice1(char boad[MAX][MAX], int a, int b) {
+	
 
 	element tmp;
 	tmp.c = b;
@@ -31,24 +37,23 @@ void Playchoice1(char boad[MAX][MAX], int a, int b) {
 	boad[b][a] = 'O';
 
 	Printboad(boad);
-	printf("2번 플레이어 턴");
+	if (Matchplay1(boad) == 1)
+		printf("1번 플레이어 승리!");
+	else
+		printf("2번 플레이어 턴");
 }
 // 첫번째 플레이어 턴
 void Playchoice2(char boad[MAX][MAX], int a, int b) {
-	while (1)
-	{
-		if (boad[b][a] == 'O' || boad[b][a] == 'X')
-			printf("	다시 입력하세요 :");
-		else {
-			element tmp;
-			tmp.c = b;
-			tmp.r = a;
-			boad[b][a] = 'X';
-			break;
-		}
-	}
+	element tmp;
+	tmp.c = b;
+	tmp.r = a;
+	boad[b][a] = 'X';
+
 	Printboad(boad);
-	printf("1번 플레이어 턴");
+	if (Matchplay2(boad) == 1)
+		printf("2번 플레이어 승리!");
+	else
+		printf("1번 플레이어 턴");
 }
 // 두번째 플레이어 턴
 int Matchplay1(unsigned char boad[MAX][MAX])
@@ -173,7 +178,7 @@ int main()
 {
 	int first;
 	int attack;
-	int again, gamenum = 1, score1 = 0, score2 = 0;
+	int again =2, gamenum = 1, score1 = 0, score2 = 0;
 	char boad[MAX][MAX];								// 필요 변수
 
 	DWORD mode;
@@ -191,43 +196,64 @@ int main()
 	GetConsoleMode(CIN, &mode);
 	SetConsoleMode(CIN, mode | ENABLE_MOUSE_INPUT);
 
-	printf("선공 : ");
-	scanf_s("%d", &attack);
+	while (1) {
+		system("cls");
 
-	Iniboad(boad);
-	Printboad(boad);
+		DWORD CIN;
+		DWORD mode;
+		CIN = GetStdHandle(STD_INPUT_HANDLE); //마우스 재활성화
+		GetConsoleMode(CIN, &mode);
+		SetConsoleMode(CIN, mode | ENABLE_MOUSE_INPUT);
 
-	if (attack == 1)
-		first = 1;
-	else
-		first = 2;
+		printf("선공 : ");
+		scanf_s("%d", &attack);
 
-	while (1)
-	{
-		if (be_input()) {
-			if (get_input(&key, &pos) != 0)
-			{
-				first++;
-				MOUSE_EVENT;
-				x = pos.X;    // 마우스클릭값이 x,y변수에 저장되도록함
-				y = pos.Y;
-				gotoxy(0, 0);
-				if (first % 2 == 0) {
-					Playchoice1(boad, x, y);
-					if (Matchplay1(boad) == 1) {
-						printf("1번 플레이어 승리!\n");
-						break;
+		Iniboad(boad);
+		Printboad(boad);
+
+		if (attack == 1)
+			first = 1;
+		else
+			first = 2;
+		do
+		{
+			if (be_input()) {
+				if (get_input(&key, &pos) != 0)
+				{
+					first++;
+					MOUSE_EVENT;
+					x = pos.X;    // 마우스클릭값이 x,y변수에 저장되도록함
+					y = pos.Y;
+					gotoxy(0, 0);
+					if (first % 2 == 0) {
+						Playchoice1(boad, x, y);
+						if (Matchplay1(boad) == 1) {
+							score1++;
+							printf("\n현재 스코어\n 플레이어1 - %d\n 플레이어2 - %d\n다시하기: 1 끝내기: 0\n  _", score1, score2);
+							scanf_s("%d", &again);
+							if (again == 1)
+								break;
+							else
+								return 0;
+						}
 					}
-				}
-				else {
-					Playchoice2(boad, x, y);
-					if (Matchplay2(boad) == 1) {
-						printf("2번 플레이어 승리!\n");
-						break;
+					else {
+						Playchoice2(boad, x, y);
+						if (Matchplay2(boad) == 1) {
+							score2++;
+							printf("\n현재 스코어\n 플레이어1 - %d\n 플레이어2 - %d\n다시하기: 1 끝내기: 0\n  _", score1, score2);
+							scanf_s("%d", &again);
+							if (again == 1) {
+								break;
+							}
+							else
+								return 0;
+						}
 					}
 				}
 			}
-		}
+		} while (1);
 	}
-
+	return 0;
 }
+
