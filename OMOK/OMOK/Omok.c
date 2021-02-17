@@ -16,30 +16,6 @@ void Iniboad(unsigned char boad[MAX][MAX][MAX]) {
 			strcpy(boad[i][j], "┼ ");
 }
 
-void Draw_BadukBoard()
-{
-
-	int i;
-	int j;
-	//int I;                                                
-	printf("┌");
-	for (i = 0; i < 14; i++)
-		printf(" ┬");
-	printf(" ┐\n");
-
-	for (i = 0; i < 14; i++) {
-		printf("├");
-		for (j = 0; j < 14; j++)
-			printf(" ┼");
-		printf(" ┤\n");
-	}
-
-	printf("└");
-	for (i = 0; i < 14; i++)
-		printf(" ┴");
-	printf(" ┘");
-}
-
 void Printboad(char boad[MAX][MAX][MAX]) {
 	gotoxy(0, 0);
 	for (int i = 0; i < MAX; i++) {
@@ -61,9 +37,9 @@ void Playchoice1(char boad[MAX][MAX][MAX], int a, int b) {
 
 	Printboad(boad);
 	if (Matchplay1(boad) == 1)
-		printf("	1번 플레이어 승리!");
+		printf("	1번 플레이어 승리! ( ○ )");
 	else
-		printf("	2번 플레이어 턴");
+		printf("	2번 플레이어 턴 ( ● )");
 }
 // 첫번째 플레이어 턴
 void Playchoice2(char boad[MAX][MAX][MAX], int a, int b) {
@@ -77,9 +53,9 @@ void Playchoice2(char boad[MAX][MAX][MAX], int a, int b) {
 
 	Printboad(boad);
 	if (Matchplay2(boad) == 1)
-		printf("	2번 플레이어 승리!");
+		printf("	2번 플레이어 승리! ( ● ) ");
 	else
-		printf("	1번 플레이어 턴");
+		printf("	1번 플레이어 턴 ( ○ )");
 }
 // 두번째 플레이어 턴
 int Matchplay1(unsigned char boad[MAX][MAX][MAX])
@@ -125,6 +101,7 @@ int Matchplay1(unsigned char boad[MAX][MAX][MAX])
 		}
 	}
 }
+// 첫번째 플레이어 승리 검사
 int Matchplay2(unsigned char boad[MAX][MAX][MAX])
 {
 	for (int i = 0; i < MAX; i++)
@@ -160,10 +137,9 @@ int Matchplay2(unsigned char boad[MAX][MAX][MAX])
 		}
 	}
 }// 승리 조건
-
+// 두번째 플레이어 승리 검사
 HANDLE COUT = 0;    // 콘솔 출력 장치
 HANDLE CIN = 0;        // 콘솔 입력 장치
-
 int be_input()
 {
 	INPUT_RECORD input_record;
@@ -213,7 +189,7 @@ int main()
 
 	int first;
 	int attack;
-	int again =2, gamenum = 1, score1 = 0, score2 = 0;
+	int again = 2, score1 = 0, score2 = 0;
 	unsigned char boad[MAX][MAX][MAX];								// 필요 변수
 
 	DWORD mode;
@@ -240,16 +216,21 @@ int main()
 		GetConsoleMode(CIN, &mode);
 		SetConsoleMode(CIN, mode | ENABLE_MOUSE_INPUT);
 
-		printf("선공 : ");
+		printf("선공(1번 : ○ , 2번 : ● )\n - ");
 		scanf_s("%d", &attack);
 	
 		Iniboad(boad);
 		Printboad(boad);
-
-		if (attack == 1)
+		
+		if (attack == 1) {
 			first = 1;
-		else
+			printf("	%d번 플레이어 턴 ( ○ )", attack);
+		}
+		else {
 			first = 2;
+			printf("	%d번 플레이어 턴 ( ● )", attack);
+		}
+
 		do
 		{
 			if (be_input()) {
