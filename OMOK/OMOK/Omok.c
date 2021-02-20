@@ -3,19 +3,115 @@
 #include <Windows.h>
 #define MAX 19	 // 판 크기
 
-
-typedef struct {
-	int r;
-	int c;
-}element;
 void gotoxy(int x, int y);
-int Matchplay1(unsigned char boad[MAX][MAX][MAX]);
-void Iniboad(unsigned char boad[MAX][MAX][MAX]) {
+int Matchplay1( char boad[MAX][MAX][MAX]);
+void Iniboad( char boad[MAX][MAX][MAX]) {
 	for (int i = 0; i < MAX; i++)
 		for (int j = 0; j < MAX; j++)
 			strcpy(boad[i][j], "┼ ");
 }
 
+int whithCheck(char boad[MAX][MAX][MAX], int a, int b)
+{
+	int result = 0;
+	if ((strcmp(boad[a][b], boad[a][b + 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 1
+		for (int i = 0; i < 3; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}	
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a][b + 1]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 2
+		for (int i = -1; i < 2; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && strcmp(boad[a][b], "○") == 0) { // 가로 case 3
+		for (int i = -2; i < 1; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+}
+// 가로 검사
+int HeightCheck(char boad[MAX][MAX][MAX], int a, int b) {
+	int result = 0;
+	if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 1
+		for (int i = 0; i < 3; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 2
+		for (int i = -1; i < 2; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && strcmp(boad[a][b], "○") == 0) { // 가로 case 3
+		for (int i = -2; i < 1; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+}
+// 세로 검사
+int diagonalCheck(char boad[MAX][MAX][MAX], int a, int b) {
+	int result = 0;
+	if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 1
+		for (int i = 0; i < 3; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && strcmp(boad[a][b], "○") == 0) {	// 가로 case 2
+		for (int i = -1; i < 2; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+	else if ((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && strcmp(boad[a][b], "○") == 0) { // 가로 case 3
+		for (int i = -2; i < 1; i++)
+		{
+			if (Threethreecheck(boad, a, b + i) == 1)
+				result = Threethreecheck(boad, a, b + i);
+		}
+		return result;
+	}
+}
+int Threethreecheck(char boad[MAX][MAX][MAX], int a, int b) {			// 수정 필요
+		if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) ||					// 세로 검사
+			(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) ||
+			(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0))
+			return 1;
+
+		else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) ||		// 대각선 1 검사
+			(strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) ||
+			(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0))
+			return 1;
+
+		 else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) ||		// 대각선 2 검사
+			(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) ||
+			(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b + 2]) == 0))
+			return 1;
+}
+// 33검사
 void Printboad(char boad[MAX][MAX][MAX]) {
 	gotoxy(0, 0);
 	for (int i = 0; i < MAX; i++) {
@@ -27,6 +123,7 @@ void Printboad(char boad[MAX][MAX][MAX]) {
 }
 // 오목판 출력
 void Playchoice1(char boad[MAX][MAX][MAX], int a, int b) {
+	static int n = 1;
 	if (a == 1)
 		a = 0;
 
@@ -34,12 +131,14 @@ void Playchoice1(char boad[MAX][MAX][MAX], int a, int b) {
 		a = (a / 2);
 
 	strcpy(boad[b][a], "○");
-
+	if (whithCheck(boad, b, a) == 1)
+		printf("		테스트 성공%d", n);
 	Printboad(boad);
 	if (Matchplay1(boad) == 1)
 		printf("	1번 플레이어 승리! ( ○ )");
 	else
 		printf("	2번 플레이어 턴 ( ● )");
+	n++;
 }
 // 첫번째 플레이어 턴
 void Playchoice2(char boad[MAX][MAX][MAX], int a, int b) {
@@ -58,7 +157,7 @@ void Playchoice2(char boad[MAX][MAX][MAX], int a, int b) {
 		printf("	1번 플레이어 턴 ( ○ )");
 }
 // 두번째 플레이어 턴
-int Matchplay1(unsigned char boad[MAX][MAX][MAX])
+int Matchplay1(char boad[MAX][MAX][MAX])
 {
 	for (int i = 0; i < MAX; i++)
 	{
@@ -102,7 +201,7 @@ int Matchplay1(unsigned char boad[MAX][MAX][MAX])
 	}
 }
 // 첫번째 플레이어 승리 검사
-int Matchplay2(unsigned char boad[MAX][MAX][MAX])
+int Matchplay2( char boad[MAX][MAX][MAX])
 {
 	for (int i = 0; i < MAX; i++)
 	{
@@ -190,7 +289,7 @@ int main()
 	int first;
 	int attack;
 	int again = 2, score1 = 0, score2 = 0;
-	unsigned char boad[MAX][MAX][MAX];								// 필요 변수
+	 char boad[MAX][MAX][MAX];								// 필요 변수
 
 	DWORD mode;
 	WORD key;
@@ -259,9 +358,8 @@ int main()
 							score2++;
 							printf("\n	현재 스코어\n	플레이어1 - %d\n	플레이어2 - %d\n	다시하기: 1 끝내기: 0\n  _", score1, score2);
 							scanf_s("%d", &again);
-							if (again == 1) {
+							if (again == 1) 
 								break;
-							}
 							else
 								return 0;
 						}
