@@ -14,6 +14,7 @@
 <!--Line-->
 금수 시도시
 <!--Line-->
+![image](https://user-images.githubusercontent.com/68563167/109393766-f6d96700-7966-11eb-8c4e-5f99c7a139ec.png)
 
 
 #### C언어로 오목 만들기	 
