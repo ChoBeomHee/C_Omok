@@ -140,6 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Omok.c" />
+    <ClCompile Include="OmokPlaying.c" />
+    <ClCompile Include="ThreeCheck.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OmokPlaying.h" />
+    <ClInclude Include="ThreeCheck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

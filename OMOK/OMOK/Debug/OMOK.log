@@ -1,30 +1,12 @@
 ﻿  Omok.c
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(22,24): warning C4013: 'whithThreecheck'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(53,25): warning C4013: 'HeightThreecheck'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(87,28): warning C4013: 'diagonalThreecheck1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(121,28): warning C4013: 'diagonalThreecheck2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(656,16): warning C4013: 'Matchplay2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(818,39): warning C4047: '=': 'DWORD'의 간접 참조 수준이 'HANDLE'과(와) 다릅니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(819,18): warning C4022: 'GetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(820,18): warning C4022: 'SetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(801,6): warning C4101: 'event' :참조되지 않은 지역 변수입니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(45): warning C4715: 'whithCheck': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(79): warning C4715: 'HeightCheck': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(113): warning C4715: 'diagonalCheck1': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(147): warning C4715: 'diagonalCheck2': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(196): warning C4715: 'whithThreecheck': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(288): warning C4715: 'diagonalThreecheck1': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(247): warning C4715: 'HeightThreecheck': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(329): warning C4715: 'diagonalThreecheck2': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(397): warning C4715: 'whithCheckCase2': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(462): warning C4715: 'HeightCheckCase2': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(526): warning C4715: 'diagonalCheckCase12': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(597): warning C4716: 'HeightThreeCheckCase2': 값을 반환해야 합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(600): warning C4716: 'diagonal1_ThreeCheckCase2': 값을 반환해야 합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(603): warning C4716: 'diagonal2_ThreeCheckCase2': 값을 반환해야 합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(590): warning C4715: 'diagonalCheckCase22': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(594): warning C4716: 'whithThreeCheckCase2': 값을 반환해야 합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(642): warning C4715: 'Playchoice1': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(708): warning C4715: 'Matchplay1': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(744): warning C4715: 'Matchplay2': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(83,39): warning C4047: '=': 'DWORD'의 간접 참조 수준이 'HANDLE'과(와) 다릅니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(84,18): warning C4022: 'GetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(85,18): warning C4022: 'SetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(90,10): warning C4013: 'Iniboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(91,12): warning C4013: 'Printboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(115,23): warning C4013: 'Playchoice1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(119,21): warning C4013: 'Matchplay1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(130,18): warning C4013: 'Playchoice2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(131,21): warning C4013: 'Matchplay2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(66,6): warning C4101: 'event' :참조되지 않은 지역 변수입니다.
   OMOK.vcxproj -> C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\Debug\OMOK.exe

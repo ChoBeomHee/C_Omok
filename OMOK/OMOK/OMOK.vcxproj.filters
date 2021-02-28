@@ -18,5 +18,19 @@
     <ClCompile Include="Omok.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="OmokPlaying.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeCheck.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OmokPlaying.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeCheck.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
