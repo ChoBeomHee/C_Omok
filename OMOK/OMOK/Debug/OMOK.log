@@ -1,12 +1,12 @@
 ﻿  Omok.c
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(83,39): warning C4047: '=': 'DWORD'의 간접 참조 수준이 'HANDLE'과(와) 다릅니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(84,18): warning C4022: 'GetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(85,18): warning C4022: 'SetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(90,10): warning C4013: 'Iniboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(91,12): warning C4013: 'Printboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(115,23): warning C4013: 'Playchoice1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(119,21): warning C4013: 'Matchplay1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(130,18): warning C4013: 'Playchoice2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(131,21): warning C4013: 'Matchplay2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(84,39): warning C4047: '=': 'DWORD'의 간접 참조 수준이 'HANDLE'과(와) 다릅니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(85,18): warning C4022: 'GetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(86,18): warning C4022: 'SetConsoleMode': 실제 매개 변수 1의 포인터가 일치하지 않습니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(91,10): warning C4013: 'Iniboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(92,12): warning C4013: 'Printboad'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(116,23): warning C4013: 'Playchoice1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(125,21): warning C4013: 'Matchplay1'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(139,18): warning C4013: 'Playchoice2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(140,21): warning C4013: 'Matchplay2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
 C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\OMOK\Omok.c(66,6): warning C4101: 'event' :참조되지 않은 지역 변수입니다.
   OMOK.vcxproj -> C:\Users\tiger\Desktop\프로젝트\C\OmokGame\OMOK\Debug\OMOK.exe

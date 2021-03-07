@@ -76,6 +76,7 @@ int main()
 
 
 	while (1) {	// 게임시작
+		int playNum = 1;
 		system("cls");
 		printf("		 * 오목 * (렌주룰)");
 		DWORD CIN;
@@ -116,6 +117,11 @@ int main()
 								first++;
 								continue;
 							}
+							else {
+								gotoxy(45, 5);
+								printf("		턴수 : %d", playNum);
+								playNum++;
+							}
 						if (Matchplay1(boad) == 1) {
 							score1++;
 							printf("\n						현재 스코어\n						플레이어1 - %d : 플레이어2 - %d\n						다시하기: 1 끝내기: 0\n								_", score1, score2);
@@ -127,6 +133,9 @@ int main()
 						}
 					}
 					else {
+						gotoxy(45, 5);
+						printf("		턴수 : %d", playNum);
+						playNum++;
 						Playchoice2(boad, x, y);
 						if (Matchplay2(boad) == 1) {
 							score2++;

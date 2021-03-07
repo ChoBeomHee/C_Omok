@@ -137,37 +137,55 @@ int diagonalCheck2(char boad[MAX][MAX][MAX], int a, int b) {
 	}
 }
 // 대각선 검사 2
+
+
 int whithThreecheck(char boad[MAX][MAX][MAX], int a, int b) {
-	if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && (strcmp(boad[a + 3][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) ||				// 세로 검사
-		(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && (strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 2][b], "●") != 0) ||
-		(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && (strcmp(boad[a - 3][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0))
+	if (((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && (strcmp(boad[a + 3][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0)) ||				// 세로 검사
+		((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && (strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 2][b], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && (strcmp(boad[a - 3][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0)))
 		return 1;
 
-	else if
-		((strcmp(boad[a][b], boad[a + 3][b]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a + 1][b], "●") != 0) || strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a + 2][b], "●") != 0))) ||
-			(strcmp(boad[a][b], boad[a - 3][b]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a - 1][b], "●") != 0) || strcmp(boad[a][b], boad[a - 1][b]) == 0 && (strcmp(boad[a - 2][b], "●") != 0))))	// 세로 검사 2
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 2(New)
 		return 1;
 
-	else if
-		(((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && strcmp(boad[a + 1][b], "●") != 0) ||
-			((strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a][b], boad[a - 2][b]) == 0)) && strcmp(boad[a - 1][b], "●") != 0))						// 세로 검사 3
+
+	else if (((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a + 3][b], "●") != 0) && strcmp(boad[a - 2][b], "●") != 0)) ||
+			 ((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a - 3][b], "●") != 0) && strcmp(boad[a + 2][b], "●") != 0)))		// 세로 검사 3(New)
 		return 1;
 
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a - 2][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 4(New)
+		return 1;
+	//세로 검사
 	else if
 		((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && (strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 1][b - 1], "●") != 0) ||				// 대각선 1 검사
 			(strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && (strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) ||
 			(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && (strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 1][b + 1], "●") != 0))
 		return 1;
 
-	else if
+	/*else if
 		((strcmp(boad[a][b], boad[a - 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a - 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a - 2][b + 2], "●") != 0))) ||
-			(strcmp(boad[a][b], boad[a + 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a + 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a + 2][b - 2], "●") != 0))))		// 대각선1 검사 2
+		 (strcmp(boad[a][b], boad[a + 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a + 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a + 2][b - 2], "●") != 0))))		// 대각선1 검사 2
 		return 1;
-
 	else if
 		(((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
 			(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && strcmp(boad[a - 1][b + 1], "●") != 0)						// 대각선1 검사 3
+		return 1;*/
+	else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 2][b + 2], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0))		// 대각선1 검사 2(New)
 		return 1;
+
+	else if (((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 1][b - 1], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0)) ||
+			 ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 1][b + 1], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0)))		// 대각선1 검사 3(New)
+		return 1;
+
+	else if ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && ((strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 2][b - 2], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b + 1]) == 0) && ((strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0))		// 대각선1 검사 4(New)
+		return 1;
+
+
+	// 대각선1 검사
 
 	else if
 		((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) && (strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) ||	// 대각선 2 검사
@@ -175,15 +193,28 @@ int whithThreecheck(char boad[MAX][MAX][MAX], int a, int b) {
 			(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b + 2]) == 0) && (strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0))
 		return 1;
 
-	else if
+	else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 2][b - 2], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) && strcmp(boad[a - 4][b - 4], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 2][b + 2], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0) && strcmp(boad[a + 4][b + 4], "●") != 0))		// 대각선2 검사 2(New)
+		return 1;
+
+	else if (((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 1][b + 1], "●") != 0 && strcmp(boad[a + 4][b + 4], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
+			 ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 1][b - 1], "●") != 0 && strcmp(boad[a - 4][b - 4], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0)))		// 대각선1 검사 3(New)
+		return 1;
+
+	else if ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) && ((strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 2][b + 2], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b - 1]) == 0) && ((strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 2][b - 2], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0))		// 대각선2 검사 4(New)
+		return 1;
+
+	// 대각선2 검사
+
+	/*else if
 		((strcmp(boad[a][b], boad[a - 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a - 2][b - 2], "●") != 0))) ||
 			(strcmp(boad[a][b], boad[a + 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a + 2][b + 2], "●") != 0))))		// 대각선2 검사 2
 		return 1;
-
 	else if
 		((strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && (strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
 			(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && (strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0)))						// 대각선2 검사 3
-		return 1;
+		return 1;*/
 }
 // 33가로 검사
 int HeightThreecheck(char boad[MAX][MAX][MAX], int a, int b) {
@@ -192,39 +223,55 @@ int HeightThreecheck(char boad[MAX][MAX][MAX], int a, int b) {
 		(strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && (strcmp(boad[a][b - 3], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b + 1], "●") != 0) || strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b + 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b - 1], "●") != 0) || strcmp(boad[a][b], boad[a][b - 1]) == 0 && (strcmp(boad[a][b - 2], "●") != 0))))	// 가로 검사 2
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && strcmp(boad[a][b + 1], "●") != 0) ||
-		((strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b], boad[a][b - 2]) == 0)) && strcmp(boad[a][b - 1], "●") != 0))						// 가로 검사 3
+	else if (((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b + 3], "●") != 0) && strcmp(boad[a][b - 2], "●") != 0)) ||
+			 ((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b - 3], "●") != 0) && strcmp(boad[a][b + 2], "●") != 0)))		// 가로 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && (strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 1][b - 1], "●") != 0) ||				// 대각선 1 검사
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b + 2], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+			 (strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b - 2], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 4(New)
+		return 1;
+	// 가로 검사
+
+	 else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && (strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 1][b - 1], "●") != 0) ||				// 대각선 1 검사
 		(strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && (strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && (strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 1][b + 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a - 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a - 2][b + 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a + 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a + 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a + 2][b - 2], "●") != 0))))		// 대각선1 검사 2
+	 else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 2][b + 2], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
+		 (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0))		// 대각선1 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
-		(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && strcmp(boad[a - 1][b + 1], "●") != 0)						// 대각선1 검사 3
+	 else if (((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 1][b - 1], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0)) ||
+		 ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 1][b + 1], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0)))		// 대각선1 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) && (strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) ||	// 대각선 2 검사
+	 else if ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && ((strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 2][b - 2], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0) ||
+		 (strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b + 1]) == 0) && ((strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0))		// 대각선1 검사 4(New)
+		return 1;
+	// 대각선1 검사
+
+	else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) && (strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) ||	// 대각선 2 검사
 		(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) && (strcmp(boad[a + 2][b + 2], "●") != 0 && strcmp(boad[a - 2][b - 2], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b + 2]) == 0) && (strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a - 2][b - 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a + 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a + 2][b + 2], "●") != 0))))		// 대각선2 검사 2
+	else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 2][b - 2], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) && strcmp(boad[a - 4][b - 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 2][b + 2], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0) && strcmp(boad[a + 4][b + 4], "●") != 0))		// 대각선2 검사 2(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && (strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
-		(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && (strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0)))						// 대각선2 검사 3
+	else if (((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 1][b + 1], "●") != 0 && strcmp(boad[a + 4][b + 4], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 1][b - 1], "●") != 0 && strcmp(boad[a - 4][b - 4], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0)))		// 대각선1 검사 3(New)
 		return 1;
+
+	else if ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) && ((strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 2][b + 2], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b - 1]) == 0) && ((strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 2][b - 2], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0))		// 대각선2 검사 4(New)
+		return 1;
+
+	// 대각선2 검사
 }
 // 33세로 검사
 int diagonalThreecheck1(char boad[MAX][MAX][MAX], int a, int b) {
@@ -233,39 +280,58 @@ int diagonalThreecheck1(char boad[MAX][MAX][MAX], int a, int b) {
 		(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && (strcmp(boad[a - 3][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a + 1][b], "●") != 0) || strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a + 2][b], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a - 1][b], "●") != 0) || strcmp(boad[a][b], boad[a - 1][b]) == 0 && (strcmp(boad[a - 2][b], "●") != 0))))	// 세로 검사 2
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && strcmp(boad[a + 1][b], "●") != 0) ||
-		((strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a][b], boad[a - 2][b]) == 0)) && strcmp(boad[a - 1][b], "●") != 0))						// 세로 검사 3
+
+	else if (((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a + 3][b], "●") != 0) && strcmp(boad[a - 2][b], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a - 3][b], "●") != 0) && strcmp(boad[a + 2][b], "●") != 0)))		// 세로 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a][b + 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && (strcmp(boad[a][b + 3], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) ||		// 가로 검사
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a - 2][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 4(New)
+		return 1;
+
+	//세로 검사
+
+	else if ((strcmp(boad[a][b], boad[a][b + 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && (strcmp(boad[a][b + 3], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) ||		// 가로 검사
 		(strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && (strcmp(boad[a][b + 2], "●") != 0 && strcmp(boad[a][b - 2], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && (strcmp(boad[a][b - 3], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b + 1], "●") != 0) || strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b + 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b - 1], "●") != 0) || strcmp(boad[a][b], boad[a][b - 1]) == 0 && (strcmp(boad[a][b - 2], "●") != 0))))	// 가로 검사 2
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && strcmp(boad[a][b + 1], "●") != 0) ||
-		((strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b], boad[a][b - 2]) == 0)) && strcmp(boad[a][b - 1], "●") != 0))						// 가로 검사 3
+	else if (((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b + 3], "●") != 0) && strcmp(boad[a][b - 2], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b - 3], "●") != 0) && strcmp(boad[a][b + 2], "●") != 0)))		// 가로 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) && (strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) ||	// 대각선 2 검사
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b + 2], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b - 2], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 4(New)
+		return 1;
+
+	// 가로 검사
+
+	else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b - 2]) == 0) && (strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) ||	// 대각선 2 검사
 		(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) && (strcmp(boad[a + 2][b + 2], "●") != 0 && strcmp(boad[a - 2][b - 2], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b + 2]) == 0) && (strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a - 2][b - 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a + 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a + 2][b + 2], "●") != 0))))		// 대각선2 검사 2
+	else if ((strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 2][b - 2], "●") != 0 && strcmp(boad[a + 1][b + 1], "●") != 0) && strcmp(boad[a - 4][b - 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 2][b + 2], "●") != 0 && strcmp(boad[a - 1][b - 1], "●") != 0) && strcmp(boad[a + 4][b + 4], "●") != 0))		// 대각선2 검사 2(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a + 1][b + 1]) == 0 && (strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
-		(strcmp(boad[a][b], boad[a - 1][b - 1]) == 0 && (strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a + 1][b + 1], "●") != 0)))						// 대각선2 검사 3
+	else if (((strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b + 3]) == 0) && ((strcmp(boad[a + 1][b + 1], "●") != 0 && strcmp(boad[a + 4][b + 4], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b - 3]) == 0) && ((strcmp(boad[a - 1][b - 1], "●") != 0 && strcmp(boad[a - 4][b - 4], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0)))		// 대각선1 검사 3(New)
 		return 1;
+
+	else if ((strcmp(boad[a][b], boad[a - 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b + 1]) == 0) && ((strcmp(boad[a - 3][b - 3], "●") != 0 && strcmp(boad[a + 2][b + 2], "●") != 0) && strcmp(boad[a - 1][b - 1], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b - 1]) == 0) && ((strcmp(boad[a + 3][b + 3], "●") != 0 && strcmp(boad[a - 2][b - 2], "●") != 0) && strcmp(boad[a + 1][b + 1], "●") != 0))		// 대각선2 검사 4(New)
+		return 1;
+
+	// 대각선2 검사
 }
 // 33대각선1 검사
 int diagonalThreecheck2(char boad[MAX][MAX][MAX], int a, int b) {
@@ -274,38 +340,55 @@ int diagonalThreecheck2(char boad[MAX][MAX][MAX], int a, int b) {
 		(strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && (strcmp(boad[a][b - 3], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b + 1], "●") != 0) || strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b + 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b - 1], "●") != 0) || strcmp(boad[a][b], boad[a][b - 1]) == 0 && (strcmp(boad[a][b - 2], "●") != 0))))	// 가로 검사 2
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 2]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a][b - 1]) == 0 && strcmp(boad[a][b], boad[a][b + 2]) == 0) && strcmp(boad[a][b + 1], "●") != 0) ||
-		((strcmp(boad[a][b], boad[a][b + 1]) == 0 && (strcmp(boad[a][b], boad[a][b - 2]) == 0)) && strcmp(boad[a][b - 1], "●") != 0))						// 가로 검사 3
+	else if (((strcmp(boad[a][b], boad[a][b + 2]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b + 1], "●") != 0 && strcmp(boad[a][b + 3], "●") != 0) && strcmp(boad[a][b - 2], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a][b - 2]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b - 1], "●") != 0 && strcmp(boad[a][b - 3], "●") != 0) && strcmp(boad[a][b + 2], "●") != 0)))		// 가로 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && (strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 1][b - 1], "●") != 0) ||				// 대각선 1 검사
+	else if ((strcmp(boad[a][b], boad[a][b + 3]) == 0 && strcmp(boad[a][b], boad[a][b + 1]) == 0) && ((strcmp(boad[a][b + 2], "●") != 0 && strcmp(boad[a][b - 1], "●") != 0) && strcmp(boad[a][b + 4], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a][b - 3]) == 0 && strcmp(boad[a][b], boad[a][b - 1]) == 0) && ((strcmp(boad[a][b - 2], "●") != 0 && strcmp(boad[a][b + 1], "●") != 0) && strcmp(boad[a][b - 4], "●") != 0))		// 가로 검사 4(New)
+		return 1;
+
+	// 가로 검사
+
+	else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && (strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 1][b - 1], "●") != 0) ||				// 대각선 1 검사
 		(strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && (strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && (strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 1][b + 1], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a - 3][b + 3]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a - 1][b + 1], "●") != 0) || (strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a - 2][b + 2], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a + 3][b - 3]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a + 1][b - 1], "●") != 0) || (strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a + 2][b - 2], "●") != 0))))		// 대각선1 검사 2
+	else if ((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 2][b + 2], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 2][b - 2], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0))		// 대각선1 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a - 1][b + 1]) == 0 && strcmp(boad[a][b], boad[a + 2][b - 2]) == 0) && strcmp(boad[a + 1][b - 1], "●") != 0) ||
-		(strcmp(boad[a][b], boad[a + 1][b - 1]) == 0 && strcmp(boad[a][b], boad[a - 2][b + 2]) == 0) && strcmp(boad[a - 1][b + 1], "●") != 0)						// 대각선1 검사 3
+	else if (((strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a + 3][b - 3]) == 0) && ((strcmp(boad[a + 1][b - 1], "●") != 0 && strcmp(boad[a + 4][b - 4], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a - 3][b + 3]) == 0) && ((strcmp(boad[a - 1][b + 1], "●") != 0 && strcmp(boad[a - 4][b + 4], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0)))		// 대각선1 검사 3(New)
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && (strcmp(boad[a + 3][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) ||				// 세로 검사
+	else if ((strcmp(boad[a][b], boad[a - 2][b + 2]) == 0 && strcmp(boad[a][b], boad[a + 1][b - 1]) == 0) && ((strcmp(boad[a - 3][b + 3], "●") != 0 && strcmp(boad[a + 2][b - 2], "●") != 0) && strcmp(boad[a - 1][b + 1], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a + 2][b - 2]) == 0 && strcmp(boad[a][b], boad[a - 1][b + 1]) == 0) && ((strcmp(boad[a + 3][b - 3], "●") != 0 && strcmp(boad[a - 2][b + 2], "●") != 0) && strcmp(boad[a + 1][b - 1], "●") != 0))		// 대각선1 검사 4(New)
+		return 1;
+
+	//대각선1 검사
+
+	else if ((strcmp(boad[a][b], boad[a + 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && (strcmp(boad[a + 3][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) ||				// 세로 검사
 		(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && (strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 2][b], "●") != 0) ||
 		(strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && (strcmp(boad[a - 3][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0))
 		return 1;
 
-	if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && ((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a + 1][b], "●") != 0) || strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a + 2][b], "●") != 0))) ||
-		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && ((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a - 1][b], "●") != 0) || strcmp(boad[a][b], boad[a - 1][b]) == 0 && (strcmp(boad[a - 2][b], "●") != 0))))	// 세로 검사 2
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 2][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 2(New)
 		return 1;
 
-	if (((strcmp(boad[a][b], boad[a - 1][b]) == 0 && strcmp(boad[a][b], boad[a + 2][b]) == 0) && strcmp(boad[a + 1][b], "●") != 0) ||
-		((strcmp(boad[a][b], boad[a + 1][b]) == 0 && (strcmp(boad[a][b], boad[a - 2][b]) == 0)) && strcmp(boad[a - 1][b], "●") != 0))						// 세로 검사 3
+
+	else if (((strcmp(boad[a][b], boad[a + 2][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a + 1][b], "●") != 0 && strcmp(boad[a + 3][b], "●") != 0) && strcmp(boad[a - 2][b], "●") != 0)) ||
+		((strcmp(boad[a][b], boad[a - 2][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a - 1][b], "●") != 0 && strcmp(boad[a - 3][b], "●") != 0) && strcmp(boad[a + 2][b], "●") != 0)))		// 세로 검사 3(New)
+		return 1;
+
+	else if ((strcmp(boad[a][b], boad[a + 3][b]) == 0 && strcmp(boad[a][b], boad[a + 1][b]) == 0) && ((strcmp(boad[a + 2][b], "●") != 0 && strcmp(boad[a - 1][b], "●") != 0) && strcmp(boad[a + 4][b], "●") != 0) ||
+		(strcmp(boad[a][b], boad[a - 3][b]) == 0 && strcmp(boad[a][b], boad[a - 1][b]) == 0) && ((strcmp(boad[a - 2][b], "●") != 0 && strcmp(boad[a + 1][b], "●") != 0) && strcmp(boad[a - 4][b], "●") != 0))		// 세로 검사 4(New)
 		return 1;
 }
 // 33대각선2 검사
